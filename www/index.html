@@ -4,68 +4,231 @@
     <meta charset="utf-8">
     <meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no, width=device-width">
     <title></title>
-
+ 
     <link href="lib/ionic/css/ionic.css" rel="stylesheet">
-    <link href="css/style.css" rel="stylesheet">
-
-    <!-- IF using Sass (run gulp sass first), then uncomment below and remove the CSS includes above
-    <link href="css/ionic.app.css" rel="stylesheet">
-    -->
-
-    <!-- ionic/angularjs js -->
     <script src="lib/ionic/js/ionic.bundle.js"></script>
+	<script src="cordova.js"></script>
+	<script src="js/app.js"></script>
+	
+	
+    <script type="text/javascript">
+		angular.module('caloriesapp', ["ionic"])
+        
+        .config(function($stateProvider, $urlRouterProvider) {
+          $stateProvider
 
-    <!-- cordova script (this will be a 404 during development) -->
-    <script src="cordova.js"></script>
+          .state('calories', {
+            url: '/calories',
+            abstract: true,
+            templateUrl: "calories.html"
+          })
 
-    <!-- your app's js -->
-    <script src="js/app.js"></script>
+          .state('calories.breakfast', {
+            url: '/breakfast',
+            views: {
+              'breakfast': {
+                templateUrl: 'breakfast.html',
+                controller: 'breakfastCtrl'
+              }
+            }
+          })
+
+          .state('calories.lunch', {
+            url: '/lunch',
+            views: {
+              'lunch': {
+                templateUrl: 'lunch.html',
+                controller: 'lunchCtrl'
+              }
+            }
+          })
+
+          .state('calories.dinner', {
+            url: '/dinner',
+            views: {
+              'dinner': {
+                templateUrl: 'dinner.html',
+                controller: 'dinnerCtrl'
+              }
+            }
+          });
+
+          $urlRouterProvider.otherwise('/calories/breakfast');
+
+        })
+        
+        
+        .controller('breakfastCtrl', function($scope) {
+          $scope.myvalue = 10;
+        })
+        
+        .controller('lunchCtrl', function($scope) {
+          $scope.options = ["Like", "Dislike", "No opinion"];
+        })
+        
+        .controller('dinnerCtrl', function($scope) {
+          $scope.checks = [{text: "Like", value: "true"}];
+        })
+        
+        ;
+	</script>
+ 
   </head>
-  <body ng-app="calorific">
+  <body ng-app="caloriesapp">
+	<ion-pane>
+	<ion-header-bar align-title="right" class="bar-stable">
+        <h1 class="title">Calories Count App</h1>
+		
+		<center><h2>
+		<div id="calCount">
+		0
+		</div><br>
+		<a class="button button-medium button-assertive" onclick="reset()">Reset</a>
+		</h2></center>
+		
+    </ion-header-bar>
 
-    <ion-pane>
-      <ion-header-bar class="bar-stable">
-        <h1 class="title">Calorific</h1>
-      </ion-header-bar>
-      <ion-content>
-<div class="list card">
+	<ion-nav-view>
+	</ion-nav-view>
+ 
+    <script type="text/ng-template" id="calories.html">
+      <ion-tabs>
+        <ion-tab title="Breakfast" href="#/calories/breakfast">
+          <ion-nav-view name="breakfast">
+          </ion-nav-view>
+        </ion-tab>
+ 
+        <ion-tab title="Lunch" href="#/calories/lunch">
+          <ion-nav-view name="lunch">
+          </ion-nav-view>
+        </ion-tab>
+ 
+        <ion-tab title="Dinner" href="#/calories/dinner">
+          <ion-nav-view name="dinner">
+          </ion-nav-view>
+        </ion-tab>
+      </ion-tabs>
+    </script>
+ 
+    <script type="text/ng-template" id="breakfast.html">
+        <ion-content><br><br>
+			<div class="list card">
+			
+				<div class="item item-avatar">
+					<img src="img/caesar-salad-small.jpg">
+					<h2>Caesar Salad</h2>
+					<p>Category: Starter</p>
+				</div>
 
-  <div class="item item-avatar">
-    <img src="http://ionicframework.com/img/docs/mcfly.jpg">
-    <h2>Marty McFly</h2>
-    <p>November 05, 1955</p>
-  </div>
+				<div class="item item-body">
+					<img class="full-image" src="img/caesar-salad.jpg">
+					<p>
+					A Caesar salad is a salad of romaine lettuce and croutons dressed with parmesan cheese, lemon juice, olive oil, egg, Worcestershire sauce, garlic, and black pepper.
+					</p>
+				</div>
+				
+				<div>
+					<center>
+					<a class="button button-positive" onclick="addCal('+55')">
+					 + 55
+					</a>
+					</center>
+				</div>
+		  
+			</div>
+        </ion-content>
+    </script>
+ 
+    <script type="text/ng-template" id="lunch.html">
+        <ion-content><br><br>
+            <div class="list card">
+				
+				 <div class="item item-avatar">
+					<img src="img/spag-bol-small.jpg">
+					<h2>Spaghetti Bolognese</h2>
+					<p>Category: Main Courses</p>
+				 </div>
 
-  <div class="item item-body">
-    <img class="full-image" src="img/Desert.jpg">
-    <p>
-      This is a "Facebook" styled Card. The header is created from a Thumbnail List item,
-      the content is from a card-body consisting of an image and paragraph text. The footer
-      consists of tabs, icons aligned left, within the card-footer.
-    </p>
-    <p>
-      <a href="#" class="subdued">1 Like</a>
-      <a href="#" class="subdued">5 Comments</a>
-    </p>
-  </div>
+                <div class="item item-body">
+					<img class="full-image" src="img/spag-bol.jpg">
+					<p>
+					  Bolognese sauce, known in Italian as ragù alla bolognese, is a meat-based sauce originating from Bologna, Italy. In Italian cuisine, it is customarily used to dress "tagliatelle al ragù" and to prepare "lasagne alla bolognese".
+					</p>	
+				</div>
+		  
+				<div>
+					<center>
+					<a class="button button-positive" onclick="addCal('+55')">
+					 + 55
+					</a>
+					</center>
+				</div>
+				
+			</div>
+        </ion-content>
+    </script>
+ 
+    <script type="text/ng-template" id="dinner.html">
+        <ion-content><br><br>
+            <div class="list card">
 
-  <div class="item tabs tabs-secondary tabs-icon-left">
-    <a class="tab-item" href="#">
-      <i class="icon ion-thumbsup"></i>
-      Like
-    </a>
-    <a class="tab-item" href="#">
-      <i class="icon ion-chatbox"></i>
-      Comment
-    </a>
-    <a class="tab-item" href="#">
-      <i class="icon ion-share"></i>
-      Share
-    </a>
-  </div>
+				 <div class="item item-avatar">
+					<img src="img/profiteroles-small.jpg">
+					<h2>Profiteroles</h2>
+					<p>Category: Desserts</p>
+				 </div>
 
-</div>
-      </ion-content>
+                <div class="item item-body">
+					<img class="full-image" src="img/profiteroles.jpg">
+					<p>
+					  A profiterole, cream puff (US), or choux à la crème is a French dessert choux pastry ball filled with whipped cream, pastry cream, custard, or (particularly in the US) ice cream. The puffs may be decorated or left plain or garnished with chocolate sauce, caramel, or a dusting of powdered sugar.
+					</p>
+				</div>
+				<div>
+					<center>
+					<a class="button button-positive" onclick="addCal('+55')">
+					 + 55
+					</a>
+					</center>
+				</div>
+				<div class="item item-avatar">
+					<img src="img/profiteroles-small.jpg">
+					<h2>Profiteroles</h2>
+					<p>Category: Desserts</p>
+				</div>
+                <div class="item item-body">
+					<img class="full-image" src="img/profiteroles.jpg">
+					<p>
+					  A profiterole, cream puff (US), or choux à la crème is a French dessert choux pastry ball filled with whipped cream, pastry cream, custard, or (particularly in the US) ice cream. The puffs may be decorated or left plain or garnished with chocolate sauce, caramel, or a dusting of powdered sugar.
+					</p>
+				</div>
+				<div>
+					<center>
+					<a class="button button-positive" onclick="addCal('+55')">
+					  + 55
+					</a>
+					</center>
+				</div>
+				
+			</div>
+        </ion-content>
+    </script>  
+	
     </ion-pane>
+	<script type="text/javascript">
+    
+    function addCal(plusMinus) {
+      var plusMinus = parseInt(plusMinus);
+      var currentLife = parseInt(document.getElementById("calCount").innerHTML) + plusMinus;
+      
+       document.getElementById("calCount").innerHTML = currentLife; 
+   }
+    
+    function reset() {
+      document.getElementById("calCount").innerHTML = 0;
+    } 
+
+    </script>
+      
   </body>
 </html>
