@@ -2,18 +2,21 @@
 <html>
   <head>
     <meta charset="utf-8">
+	<!--Responsive scaling for mobile devices-->
     <meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no, width=device-width">
-    <title></title>
- 
+    <title>Calories Intake App</title>
+	<!--Calling CSS file-->
     <link href="lib/ionic/css/ionic.css" rel="stylesheet">
+	<!--Calling javascript files-->
     <script src="lib/ionic/js/ionic.bundle.js"></script>
 	<script src="cordova.js"></script>
 	<script src="js/app.js"></script>
 	
 	
     <script type="text/javascript">
+		<!-- caloriesapp is the name of my module container -->
 		angular.module('caloriesapp', ["ionic"])
-        
+        <!--function to set the states URLs-->
         .config(function($stateProvider, $urlRouterProvider) {
           $stateProvider
 
@@ -22,87 +25,72 @@
             abstract: true,
             templateUrl: "calories.html"
           })
-
+		<!--this is the breakfast state URL-->
           .state('calories.breakfast', {
             url: '/breakfast',
             views: {
               'breakfast': {
                 templateUrl: 'breakfast.html',
-                controller: 'breakfastCtrl'
               }
             }
           })
-
+		<!--this is the Lunch state URL-->
           .state('calories.lunch', {
             url: '/lunch',
             views: {
               'lunch': {
                 templateUrl: 'lunch.html',
-                controller: 'lunchCtrl'
               }
             }
           })
-
+		<!--this is the dinner state URL-->
           .state('calories.dinner', {
             url: '/dinner',
             views: {
               'dinner': {
                 templateUrl: 'dinner.html',
-                controller: 'dinnerCtrl'
               }
             }
           });
-
+		<!--the defaulted URL state is the breakfast state-->
           $urlRouterProvider.otherwise('/calories/breakfast');
 
-        })
-        
-        
-        .controller('breakfastCtrl', function($scope) {
-          $scope.myvalue = 10;
-        })
-        
-        .controller('lunchCtrl', function($scope) {
-          $scope.options = ["Like", "Dislike", "No opinion"];
-        })
-        
-        .controller('dinnerCtrl', function($scope) {
-          $scope.checks = [{text: "Like", value: "true"}];
-        })
-        
-        ;
+        });
 	</script>
  
   </head>
+  <!--my angularJS application is the caloriesapp container-->
   <body ng-app="caloriesapp">
+	<!--Ion pane container-->
 	<ion-pane>
+	<!--Ion header containing my reset button and total, so that the calories intake total is fixed to the top at all times providing the user more visibility of their intake as they scroll through the food items whilst adding items they can see their total and reset the count if needs be-->
 	<ion-header-bar align-title="right" class="bar-stable bar-calm">
         <h1 class="title">Calories Intake</h1>
-		
 		<center><h2>
 		<div id="calCount">
 		0
 		</div><br>
 		<a class="button button-medium button-assertive" onclick="reset()">Reset</a>
 		</h2></center>
-		
     </ion-header-bar>
 
 	<ion-nav-view>
 	</ion-nav-view>
- 
+	<!--Javascript for ion tabs to connect to the states views when activated-->
     <script type="text/ng-template" id="calories.html">
+	  <!--Ion tabs stylet to have a tabs-striped, a background color and tabs color-->
       <ion-tabs class="tabs-striped tabs-background-dark tabs-color-energized">
+	    <!--Breakfast tab view-->
         <ion-tab title="Breakfast" href="#/calories/breakfast" class="tab-positive">
           <ion-nav-view name="breakfast">
           </ion-nav-view>
         </ion-tab>
- 
+		<!--Lunch tab view-->
         <ion-tab title="Lunch" href="#/calories/lunch">
           <ion-nav-view name="lunch">
           </ion-nav-view>
         </ion-tab>
- 
+		<!--Dinner tab view-->
         <ion-tab title="Dinner" href="#/calories/dinner">
           <ion-nav-view name="dinner">
           </ion-nav-view>
@@ -112,7 +100,9 @@
 	
  <!-- Start of Breakfast Items -->
     <script type="text/ng-template" id="breakfast.html">
+		<!--Ion Content used instead of ion view to provide scrolling ability-->
         <ion-content><br><br>
+			<!--List Card Style-->
 			<div class="list card">
 			
 				<div class="item item-avatar">
@@ -312,7 +302,9 @@
  
  <!-- Start of Lunch Items -->
     <script type="text/ng-template" id="lunch.html">
+		<!--Ion Content used instead of ion view to provide scrolling ability-->
         <ion-content><br><br>
+			<!--List Card Style-->
             <div class="list card">
 				
 				<div class="item item-avatar">
@@ -512,7 +504,9 @@
  
  <!-- Start of Dinner Items -->
     <script type="text/ng-template" id="dinner.html">
+		<!--Ion Content used instead of ion view to provide scrolling ability-->
         <ion-content><br><br>
+			<!--List Card Style-->
             <div class="list card">
 
 				 <div class="item item-avatar">
@@ -712,15 +706,18 @@
 <!-- End of Dinner Items -->	
 	
     </ion-pane>
+	<!--Javascript for adding calories buttons and the reset button-->
 	<script type="text/javascript">
-    
+    <!--Function created named addCal-->
     function addCal(plus) {
+	  <!--variable named plus uses parseInt to parse a string and return an integer-->
       var plus = parseInt(plus);
+	  <!--variable named currentLife takes parseInt to parse a string and return an integer and variable plus, returning the result to the element with the id of calCount, which is up at the very top in the header and is the calories intake total-->
       var currentLife = parseInt(document.getElementById("calCount").innerHTML) + plus;
       
        document.getElementById("calCount").innerHTML = currentLife; 
    }
-    
+     <!--Function created reset that reset's the value of calCount to zero-->
     function reset() {
       document.getElementById("calCount").innerHTML = 0;
     } 
