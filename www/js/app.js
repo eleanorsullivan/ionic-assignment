@@ -1,4 +1,4 @@
-angular.module('caloriesapp', ['ionic'])
+angular.module('caloriesapp', ['ionic','caloriesapp.controllers'])
 
 .run(function($ionicPlatform) {
   $ionicPlatform.ready(function() {
@@ -21,7 +21,7 @@ angular.module('caloriesapp', ['ionic'])
             abstract: true,
             templateUrl: "calories.html"
           })
-		<!--this is the breakfast state URL-->
+		//this is the breakfast state URL
           .state('calories.breakfast', {
             url: '/breakfast',
             views: {
@@ -30,7 +30,7 @@ angular.module('caloriesapp', ['ionic'])
               }
             }
           })
-		<!--this is the Lunch state URL-->
+		//this is the Lunch state URL
           .state('calories.lunch', {
             url: '/lunch',
             views: {
@@ -39,7 +39,7 @@ angular.module('caloriesapp', ['ionic'])
               }
             }
           })
-		<!--this is the dinner state URL-->
+		//this is the dinner state URL
           .state('calories.dinner', {
             url: '/dinner',
             views: {
@@ -48,7 +48,7 @@ angular.module('caloriesapp', ['ionic'])
               }
             }
           });
-		<!--the defaulted URL state is the breakfast state-->
+		//the defaulted URL state is the breakfast state
           $urlRouterProvider.otherwise('/calories/breakfast');
 
         });
