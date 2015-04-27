@@ -12,3 +12,43 @@ angular.module('caloriesapp', ['ionic'])
     }
   });
 })
+
+.config(function($stateProvider, $urlRouterProvider) {
+          $stateProvider
+
+          .state('calories', {
+            url: '/calories',
+            abstract: true,
+            templateUrl: "calories.html"
+          })
+		<!--this is the breakfast state URL-->
+          .state('calories.breakfast', {
+            url: '/breakfast',
+            views: {
+              'breakfast': {
+                templateUrl: 'breakfast.html',
+              }
+            }
+          })
+		<!--this is the Lunch state URL-->
+          .state('calories.lunch', {
+            url: '/lunch',
+            views: {
+              'lunch': {
+                templateUrl: 'lunch.html',
+              }
+            }
+          })
+		<!--this is the dinner state URL-->
+          .state('calories.dinner', {
+            url: '/dinner',
+            views: {
+              'dinner': {
+                templateUrl: 'dinner.html',
+              }
+            }
+          });
+		<!--the defaulted URL state is the breakfast state-->
+          $urlRouterProvider.otherwise('/calories/breakfast');
+
+        });
