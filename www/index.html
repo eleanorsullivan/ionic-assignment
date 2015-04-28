@@ -27,12 +27,14 @@
 		<a class="button button-medium button-assertive" onclick="reset()">Reset</a>
 		</h2></center>
     </ion-header-bar>
+	
 	<!--The is the placeholder for the view that is selected-->
 	<ion-nav-view>
 	</ion-nav-view>
+	
 	<!--Javascript for ion tabs to connect to the states views when activated-->
     <script type="text/ng-template" id="calories.html">
-	  <!--Ion tabs stylet to have a tabs-striped, a background color and tabs color-->
+	  <!--Ion tabs style to have a tabs-striped, a background color and tabs color-->
       <ion-tabs class="tabs-striped tabs-background-dark tabs-color-energized">
 	    <!--Breakfast tab view-->
         <ion-tab title="Breakfast" href="#/calories/breakfast" class="tab-positive">
@@ -50,6 +52,52 @@
           </ion-nav-view>
         </ion-tab>
       </ion-tabs>
+    </script>
+	
+	<script type="text/ng-template" id="intro.html">
+      
+        <ion-content><br><br><br><br><br>
+		
+			<div>
+				<center>
+				<a class="button button-royal" href="#/calories/breakfast">
+				 Continue to Calories Intake
+				</a>
+				</center>
+			</div>
+		
+			<div class="list card">
+				<div class="item item-avatar">
+					<img src="img/breakfast.jpg">
+					<h2>Instructions</h2>
+					<p>How to use App:</p>
+				</div>
+				<h2>Instructions</h2>
+				
+			
+			<div class="item item-body">
+					
+					<p>
+					List.
+					</p>
+				</div>
+				<div>
+					<center>
+					<a class="button button-royal" href="#/calories/breakfast">
+					 Go to Menu Items
+					</a>
+					</center>
+				</div>
+			</div>
+        </ion-content>
+		
+		<ion-footer-bar align-title="center" class="bar-calm">
+		   <div>
+			 <h2 class="title">App by Eleanor O'Sullivan &copy; 2015</h2>
+		  </div>
+		</ion-footer-bar>
+		
+      </ion-view>
     </script>
 	
  <!-- Start of Breakfast Items -->
@@ -657,9 +705,11 @@
 			</div>
         </ion-content>
     </script>  
+	
 <!-- End of Dinner Items -->	
 	
-    </ion-pane>
+	</ion-pane>	
+    
 	<!--Javascript for adding calories buttons and the reset button-->
 	<script type="text/javascript">
     <!--Function created named addCal-->
@@ -677,6 +727,6 @@
     } 
 
     </script>
-      
   </body>
+    
 </html>

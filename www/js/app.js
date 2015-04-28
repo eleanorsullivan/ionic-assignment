@@ -15,6 +15,11 @@ angular.module('caloriesapp', ['ionic'])
 
 .config(function($stateProvider, $urlRouterProvider) {
           $stateProvider
+		//this is the intro state with the App instructions		
+		  .state('intro', {
+          url: '/',
+          templateUrl: 'intro.html'
+        })
 
           .state('calories', {
             url: '/calories',
@@ -48,7 +53,7 @@ angular.module('caloriesapp', ['ionic'])
               }
             }
           });
-		//the defaulted URL state is the breakfast state
-          $urlRouterProvider.otherwise('/calories/breakfast');
+		//the defaulted URL state is the intro state
+          $urlRouterProvider.otherwise('/');
 
         });
