@@ -1,4 +1,4 @@
-angular.module('caloriesapp', ['ionic','caloriesapp.controllers'])
+angular.module('caloriesapp', ['ionic'])
 
 .run(function($ionicPlatform) {
   $ionicPlatform.ready(function() {
