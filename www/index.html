@@ -19,12 +19,13 @@
 	<ion-pane>
 	<!--Ion header containing my reset button and total, so that the calories intake total is fixed to the top at all times providing the user more visibility of their intake as they scroll through the food items whilst adding items they can see their total and reset the count if needs be-->
 	<ion-header-bar align-title="right" class="bar-stable bar-calm">
+	<a class="button button-medium button-assertive" onclick="reset()">Reset</a>
         <h1 class="title">Calories Intake</h1>
 		<center><h2>
 		<div id="calCount">
 		0
 		</div><br>
-		<a class="button button-medium button-assertive" onclick="reset()">Reset</a>
+		
 		</h2></center>
     </ion-header-bar>
 	
@@ -51,43 +52,48 @@
           <ion-nav-view name="dinner">
           </ion-nav-view>
         </ion-tab>
+		<!--Homw tab view-->
+        <ion-tab title="Home" href="#/intro">
+          <ion-nav-view name="intro">
+          </ion-nav-view>
+        </ion-tab>
       </ion-tabs>
     </script>
 	
 	<script type="text/ng-template" id="intro.html">
-      
+      <ion-view view-title="Home">
         <ion-content><br><br><br><br><br>
 		
 			<div>
 				<center>
-				<a class="button button-royal" href="#/calories/breakfast">
-				 Continue to Calories Intake
-				</a>
+					<a class="button button-royal" href="#/calories/breakfast">
+					Continue to Calories Intake
+					</a>
 				</center>
 			</div>
-		
-			<div class="list card">
-				<div class="item item-avatar">
-					<img src="img/breakfast.jpg">
-					<h2>Instructions</h2>
-					<p>How to use App:</p>
-				</div>
-				<h2>Instructions</h2>
-				
 			
-			<div class="item item-body">
-					
-					<p>
-					List.
-					</p>
-				</div>
-				<div>
-					<center>
-					<a class="button button-royal" href="#/calories/breakfast">
-					 Go to Menu Items
-					</a>
-					</center>
-				</div>
+			<div class="list card">
+				
+			  <a href="#" class="item item-icon-left assertive">
+				<i class="icon ion-information-circled"></i>
+				Instructions
+			  </a>
+
+			  <a href="#/calories/breakfast" class="item item-icon-left balanced">
+				<i class="icon ion-spoon"></i>
+				Breakfast List
+			  </a>
+
+			  <a href="#/calories/lunch" class="item item-icon-left energized">
+				<i class="icon ion-knife"></i>
+				Lunch List
+			  </a>
+
+			  <a href="#/calories/dinner" class="item item-icon-left positive">
+				<i class="icon ion-fork"></i>
+				Dinner List
+			  </a>
+
 			</div>
         </ion-content>
 		
@@ -102,6 +108,7 @@
 	
  <!-- Start of Breakfast Items -->
     <script type="text/ng-template" id="breakfast.html">
+	  <ion-view view-title="Breakfast List">
 		<!--Ion Content used instead of ion view to provide scrolling ability-->
         <ion-content><br><br>
 			<!--List Card Style-->
@@ -299,11 +306,13 @@
 				
 			</div>
         </ion-content>
+	  </ion-view>
     </script>
  <!-- End of Breakfast Items -->
  
  <!-- Start of Lunch Items -->
     <script type="text/ng-template" id="lunch.html">
+	  <ion-view view-title="Lunch List">
 		<!--Ion Content used instead of ion view to provide scrolling ability-->
         <ion-content><br><br>
 			<!--List Card Style-->
@@ -501,11 +510,13 @@
 				
 			</div>
         </ion-content>
+	  </ion-view>
     </script>
  <!-- End of Lunch Items -->
  
  <!-- Start of Dinner Items -->
     <script type="text/ng-template" id="dinner.html">
+	  <ion-view view-title="Dinner List">
 		<!--Ion Content used instead of ion view to provide scrolling ability-->
         <ion-content><br><br>
 			<!--List Card Style-->
@@ -704,6 +715,7 @@
 				
 			</div>
         </ion-content>
+	  </ion-view>
     </script>  
 	
 <!-- End of Dinner Items -->	
