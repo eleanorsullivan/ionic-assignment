@@ -9,9 +9,15 @@
     <link href="lib/ionic/css/ionic.css" rel="stylesheet">
 	<!--Calling javascript files-->
     <script src="lib/ionic/js/ionic.bundle.js"></script>
-	
 	<script src="js/app.js"></script>
 	<script src="js/controllers.js"></script>
+	<!--Inline Css-->
+	<style>
+	.pane {
+	background-color: #D3D3D3;
+	}
+	</style>
+	
   </head>
   <!--my angularJS application is the caloriesapp container-->
   <body ng-app="caloriesapp">
@@ -25,7 +31,6 @@
 		<div id="calCount">
 		0
 		</div><br>
-		
 		</h2></center>
     </ion-header-bar>
 	
@@ -63,31 +68,27 @@
 	<script type="text/ng-template" id="intro.html">
       <ion-view view-title="Home">
         <ion-content><br><br>
-		
+			<!--Button to continue to breakfast state to begin selection items to add to total-->
 			<div>
 				<center>
-					<a class="button button-royal" href="#/calories/breakfast">
+					<a class="button button-calm" href="#/calories/breakfast">
 					Continue to Calories Intake
 					</a>
 				</center>
 			</div>
-			
-			<div class="list card">
-					
-			<div class="list">
-
-				<div class="item item-divider">
+			<!--List Card Style-->
+			<div class="list card">	
+			  <div class="list">
+				<div class="item item-divider assertive">
 					<i class="icon ion-information-circled assertive"></i>
 					Instructions
 				</div>
-				    <li>
+				    <li class="calm">
 					To reset the calories total to zero press the reset button up top.</li>
-					<li>The total calories intake will be displayed next to the reset button at all times.</li>
-					<li>An add to total button with the amount of calories appears under each food item. Click to add to total.</li>
-					<li>Click the "Continue to Calories Intake" button to begin or select from the 3 meal time options below.</li>
-				 
-
-			</div>
+					<li class="calm">The total calories intake will be displayed next to the reset button at all times.</li>
+					<li class="calm">An add to total button with the amount of calories appears under each food item. Click to add to total.</li>
+					<li class="calm">Click the "Continue to Calories Intake" button to begin or select from the 3 meal time options below.</li>
+			  </div>
 
 			  <a href="#/calories/breakfast" class="item item-icon-left balanced">
 				<i class="icon ion-spoon"></i>
@@ -103,11 +104,10 @@
 				<i class="icon ion-fork"></i>
 				Dinner List
 			  </a>
-
 			</div>
         </ion-content>
 		
-		<ion-footer-bar align-title="center" class="bar-calm">
+		<ion-footer-bar align-title="center" class="bar-royal">
 		   <div>
 			 <h2 class="title">App by Eleanor O'Sullivan &copy; 2015</h2>
 		  </div>
