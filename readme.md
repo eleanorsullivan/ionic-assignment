@@ -10,9 +10,9 @@ The user when first activating the app is brought to the home/introduction page.
 The three views are Breakfast, Lunch and Dinner.
 There are three tabs at the bottom of each of these views that allow you to select their view and also a home tab.
 On each of the three views the user can scroll down through the list of food items.  Each food item has a description and the amount of calories it has.
-The user selects the add calories button that has the calories on it of each food item they have eaten or they can click on it as many times needed for the quantity they have eaten that food item.
-There is a reset button situated at in the header of the app and the total calories count, which is set to display zero at the start.
-All the calories buttons are clicked they are added to the total amount that is displayed at times as the user moves through the three meal times, which why I have placed it in the header.
+The user selects the add calories button that has the calories on it of each food item they have eaten or they can click on it as many times needed for the quantity they have eaten of that food item.
+There is a reset button situated in the header of the app and the total calories count, which is set to display zero at the start.
+As the calories buttons are clicked they are added to the total amount that is displayed at all times as the user moves through the three meal times, which is why I have placed it in the header.
 The user can reset the total back to zero at any time by selecting the reset button.
 
 REFERENCES.
